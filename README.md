@@ -1,30 +1,60 @@
-# Landing page design
+# GradLink AI
 
-*Automatically synced with your [v0.dev](https://v0.dev) deployments*
+GradLink AI is an AI-powered academic and career companion platform designed for university students. It helps users analyze their academic performance, explore career paths, discover opportunities, and manage their educational journey—all in one place.
 
-[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/emmanuel-s-projects-25a73754/v0-landing-page-design)
-[![Built with v0](https://img.shields.io/badge/Built%20with-v0.dev-black?style=for-the-badge)](https://v0.dev/chat/projects/bCUA7BJ5UP7)
+## Features
 
-## Overview
+- **Dashboard:** Overview of CGPA, career suggestions, recent activities, and personalized opportunities.
+- **CGPA Analyzer:** Analyze, calculate, and track your CGPA history.
+- **Courses:** Manage current and completed courses, view grades, and progress.
+- **Careers:** Explore career paths, requirements, and growth statistics.
+- **Opportunities:** Find internships, career fairs, and other relevant opportunities.
+- **Profile:** Manage your academic profile, achievements, and goals.
+- **Settings:** Customize notifications, privacy, and appearance preferences.
+- **GradBot:** AI chat assistant for career and academic guidance.
 
-This repository will stay in sync with your deployed chats on [v0.dev](https://v0.dev).
-Any changes you make to your deployed app will be automatically pushed to this repository from [v0.dev](https://v0.dev).
+## Tech Stack
 
-## Deployment
+- **Next.js** (App Router, Client Components)
+- **React** (Hooks, Context)
+- **TypeScript**
+- **Tailwind CSS** (Custom theme)
+- **Radix UI** (Accessible UI primitives)
+- **Lucide Icons**
+- **Zod** (Form validation)
+- **Sonner** (Toasts/Notifications)
 
-Your project is live at:
+## Project Structure
 
-**[https://vercel.com/emmanuel-s-projects-25a73754/v0-landing-page-design](https://vercel.com/emmanuel-s-projects-25a73754/v0-landing-page-design)**
+- `/app` — Main application pages (dashboard, profile, chat, etc.)
+- `/components` — Reusable UI and feature components
+- `/hooks` — Custom React hooks (e.g., mobile detection, toast)
+- `/lib` — Utility functions
+- `/public` — Static assets
+- `/styles` — Global and component styles
 
-## Build your app
+## Getting Started
 
-Continue building your app on:
+1. **Install dependencies:**
+   ```sh
+   pnpm install
+   ```
+2. **Run the development server:**
+   ```sh
+   pnpm dev
+   ```
+3. **Open [http://localhost:3000](http://localhost:3000) in your browser.**
 
-**[https://v0.dev/chat/projects/bCUA7BJ5UP7](https://v0.dev/chat/projects/bCUA7BJ5UP7)**
+## Customization
 
-## How It Works
+- Update theme and colors in [`tailwind.config.ts`](tailwind.config.ts).
+- Adjust UI components in [`components/`](components/).
+- Configure environment variables in `.env.local`.
 
-1. Create and modify your project using [v0.dev](https://v0.dev)
-2. Deploy your chats from the v0 interface
-3. Changes are automatically pushed to this repository
-4. Vercel deploys the latest version from this repository
+## License
+
+MIT
+
+---
+
+Made with ❤️ for students by students.
