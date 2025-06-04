@@ -2,8 +2,9 @@
 
 import Link from "next/link"
 import Image from "next/image"
-import { usePathname } from "next/navigation"
-import { Bell, MessageSquare, User } from "lucide-react"
+import { usePathname, useRouter } from "next/navigation"
+import { Bell, MessageSquare, User, LogOut } from "lucide-react"
+import { supabase } from "@/lib/supabase"
 import { Button } from "@/components/ui/button"
 import { ModeToggle } from "@/components/mode-toggle"
 import {
@@ -17,6 +18,17 @@ import {
 
 export function DashboardHeader() {
   const pathname = usePathname()
+  const router = useRouter()
+
+  const handleLogout = async () => {
+    const { error } = await supabase.auth.signOut()
+    if (!error) {
+      router.push("/login")
+    } else {
+      // Handle error, e.g., show a notification
+      console.error("Error logging out:", error.message)
+    }
+  }
 
   return (
     <header className="sticky top-0 z-30 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6">
@@ -55,8 +67,9 @@ export function DashboardHeader() {
               <Link href="/dashboard/settings">Settings</Link>
             </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem asChild>
-              <Link href="/login">Log out</Link>
+            <DropdownMenuItem onClick={handleLogout} className="cursor-pointer">
+              <LogOut className="mr-2 h-4 w-4" />
+              <span>Log out</span>
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
