@@ -31,7 +31,7 @@ export function HeroSection() {
           <div className="mx-auto lg:mx-0 relative">
             <div className="relative h-[350px] w-[350px] sm:h-[400px] sm:w-[400px] lg:h-[500px] lg:w-[500px]">
               <Image
-                src="/03.06.2025_18.08.11_REC.png"
+                src="/20250603_2321_Website Landing Visual_remix_01jwvy2sezedxvtvcwp2cr8bhy (1).png"
                 alt="Students using GradLink AI"
                 fill
                 className="object-cover rounded-lg"
