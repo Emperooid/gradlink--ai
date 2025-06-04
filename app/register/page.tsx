@@ -8,7 +8,7 @@ export default function RegisterPage() {
       <div className="hidden lg:block bg-muted relative">
         <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-background/40 border-round" />
         <Image
-          src="/03.06.2025_18.08.11_REC.png"
+          src="/GradLink Ai Logo (1).png"
           alt="Students collaborating"
           fill
           className="object-cover"
