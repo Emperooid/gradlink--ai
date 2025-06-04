@@ -21,7 +21,7 @@ export function DashboardHeader() {
   return (
     <header className="sticky top-0 z-30 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6">
       <Link href="/dashboard" className="flex items-center gap-2 md:gap-3">
-        <Image src="/logo.png" alt="GradLink AI Logo" width={32} height={32} className="h-8 w-auto" />
+        <Image src="/image-removebg-preview (1).png" alt="GradLink AI Logo" width={32} height={32} className="h-8 w-auto" />
         <span className="font-bold text-lg hidden md:inline-block">GradLink AI</span>
       </Link>
       <div className="ml-auto flex items-center gap-2">
