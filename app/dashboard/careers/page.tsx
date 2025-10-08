@@ -109,108 +109,108 @@ export default function CareersPage() {
   )
 
   return (
-    <div className="space-y-6">
-      <div>
-        <h1 className="text-3xl font-bold tracking-tight">Career Paths</h1>
-        <p className="text-muted-foreground">
+    <div className="space-y-4 sm:space-y-6">
+      <div className="space-y-1 sm:space-y-2">
+        <h1 className="text-2xl sm:text-3xl font-bold tracking-tight">Career Paths</h1>
+        <p className="text-sm sm:text-base text-muted-foreground">
           Discover career opportunities that match your academic profile and interests
         </p>
       </div>
 
-      <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+      <div className="flex flex-col gap-3 sm:gap-4 md:flex-row md:items-center md:justify-between">
         <div className="relative flex-1 max-w-md">
           <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
           <Input
             placeholder="Search career paths..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="pl-10"
+            className="pl-10 h-9 sm:h-10"
           />
         </div>
         <div className="flex gap-2">
-          <Button variant="outline" size="sm">
-            <Filter className="mr-2 h-4 w-4" />
-            Filter
+          <Button variant="outline" size="sm" className="text-xs sm:text-sm">
+            <Filter className="mr-1 sm:mr-2 h-3 w-3 sm:h-4 sm:w-4" />
+            <span className="hidden sm:inline">Filter</span>
           </Button>
-          <Button variant="outline" size="sm">
-            Sort by Match
+          <Button variant="outline" size="sm" className="text-xs sm:text-sm">
+            <span className="hidden sm:inline">Sort by </span>Match
           </Button>
         </div>
       </div>
 
-      <Tabs defaultValue="recommended" className="space-y-4">
-        <TabsList>
-          <TabsTrigger value="recommended">Recommended</TabsTrigger>
-          <TabsTrigger value="saved">Saved Paths</TabsTrigger>
-          <TabsTrigger value="trending">Trending</TabsTrigger>
+      <Tabs defaultValue="recommended" className="space-y-3 sm:space-y-4">
+        <TabsList className="grid w-full grid-cols-3">
+          <TabsTrigger value="recommended" className="text-xs sm:text-sm">Recommended</TabsTrigger>
+          <TabsTrigger value="saved" className="text-xs sm:text-sm">Saved</TabsTrigger>
+          <TabsTrigger value="trending" className="text-xs sm:text-sm">Trending</TabsTrigger>
         </TabsList>
 
-        <TabsContent value="recommended" className="space-y-4">
-          <div className="grid gap-6">
+        <TabsContent value="recommended" className="space-y-3 sm:space-y-4">
+          <div className="grid gap-4 sm:gap-6">
             {filteredCareers.map((career) => (
               <Card key={career.id} className="overflow-hidden">
-                <CardHeader>
-                  <div className="flex items-start justify-between">
-                    <div className="space-y-1">
-                      <div className="flex items-center gap-2">
-                        <CardTitle className="text-xl">{career.title}</CardTitle>
-                        <Badge variant="secondary">{career.match}% Match</Badge>
+                <CardHeader className="pb-3 sm:pb-4">
+                  <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 sm:gap-4">
+                    <div className="space-y-1 min-w-0 flex-1">
+                      <div className="flex flex-wrap items-center gap-2">
+                        <CardTitle className="text-lg sm:text-xl">{career.title}</CardTitle>
+                        <Badge variant="secondary" className="text-xs">{career.match}% Match</Badge>
                       </div>
-                      <CardDescription className="text-base">{career.company}</CardDescription>
+                      <CardDescription className="text-sm sm:text-base">{career.company}</CardDescription>
                     </div>
-                    <Button variant="ghost" size="icon">
+                    <Button variant="ghost" size="icon" className="shrink-0 h-8 w-8 sm:h-10 sm:w-10">
                       <BookmarkPlus className="h-4 w-4" />
                     </Button>
                   </div>
                 </CardHeader>
-                <CardContent className="space-y-6">
+                <CardContent className="space-y-4 sm:space-y-6">
                   <div className="space-y-2">
-                    <div className="flex items-center justify-between text-sm">
+                    <div className="flex items-center justify-between text-xs sm:text-sm">
                       <span>Career Match</span>
                       <span className="font-medium">{career.match}%</span>
                     </div>
-                    <Progress value={career.match} className="h-2" />
+                    <Progress value={career.match} className="h-1.5 sm:h-2" />
                   </div>
 
-                  <p className="text-muted-foreground">{career.description}</p>
+                  <p className="text-sm sm:text-base text-muted-foreground">{career.description}</p>
 
-                  <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-                    <div>
-                      <h4 className="font-medium text-sm mb-2">Salary Range</h4>
-                      <p className="text-sm text-muted-foreground">{career.salaryRange}</p>
+                  <div className="grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+                    <div className="space-y-1">
+                      <h4 className="font-medium text-xs sm:text-sm">Salary Range</h4>
+                      <p className="text-xs sm:text-sm text-muted-foreground">{career.salaryRange}</p>
                     </div>
-                    <div>
-                      <h4 className="font-medium text-sm mb-2">Growth Rate</h4>
-                      <p className="text-sm text-muted-foreground flex items-center gap-1">
+                    <div className="space-y-1">
+                      <h4 className="font-medium text-xs sm:text-sm">Growth Rate</h4>
+                      <p className="text-xs sm:text-sm text-muted-foreground flex items-center gap-1">
                         <TrendingUp className="h-3 w-3" />
                         {career.growthRate}
                       </p>
                     </div>
-                    <div>
-                      <h4 className="font-medium text-sm mb-2">Education</h4>
-                      <p className="text-sm text-muted-foreground">{career.education}</p>
+                    <div className="space-y-1">
+                      <h4 className="font-medium text-xs sm:text-sm">Education</h4>
+                      <p className="text-xs sm:text-sm text-muted-foreground">{career.education}</p>
                     </div>
-                    <div>
-                      <h4 className="font-medium text-sm mb-2">Experience</h4>
-                      <p className="text-sm text-muted-foreground">{career.experience}</p>
+                    <div className="space-y-1">
+                      <h4 className="font-medium text-xs sm:text-sm">Experience</h4>
+                      <p className="text-xs sm:text-sm text-muted-foreground">{career.experience}</p>
                     </div>
                   </div>
 
-                  <div>
-                    <h4 className="font-medium text-sm mb-2">Key Skills Required</h4>
-                    <div className="flex flex-wrap gap-2">
+                  <div className="space-y-2">
+                    <h4 className="font-medium text-xs sm:text-sm">Key Skills Required</h4>
+                    <div className="flex flex-wrap gap-1 sm:gap-2">
                       {career.skills.map((skill, index) => (
-                        <Badge key={index} variant="outline">
+                        <Badge key={index} variant="outline" className="text-xs">
                           {skill}
                         </Badge>
                       ))}
                     </div>
                   </div>
 
-                  <div className="flex gap-2 pt-4">
-                    <Button className="flex-1">Save Career Path</Button>
-                    <Button variant="outline" className="flex-1">
-                      <ExternalLink className="mr-2 h-4 w-4" />
+                  <div className="flex flex-col sm:flex-row gap-2 pt-2 sm:pt-4">
+                    <Button className="flex-1 text-xs sm:text-sm">Save Career Path</Button>
+                    <Button variant="outline" className="flex-1 text-xs sm:text-sm">
+                      <ExternalLink className="mr-1 sm:mr-2 h-3 w-3 sm:h-4 sm:w-4" />
                       Learn More
                     </Button>
                   </div>
@@ -220,26 +220,26 @@ export default function CareersPage() {
           </div>
         </TabsContent>
 
-        <TabsContent value="saved">
-          <div className="grid gap-6">
+        <TabsContent value="saved" className="space-y-3 sm:space-y-4">
+          <div className="grid gap-4 sm:gap-6">
             {careerPaths
               .filter((career) => career.saved)
               .map((career) => (
                 <Card key={career.id}>
-                  <CardHeader>
-                    <div className="flex items-start justify-between">
-                      <div>
-                        <CardTitle>{career.title}</CardTitle>
-                        <CardDescription>{career.company}</CardDescription>
+                  <CardHeader className="pb-3 sm:pb-4">
+                    <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 sm:gap-4">
+                      <div className="min-w-0 flex-1">
+                        <CardTitle className="text-lg sm:text-xl">{career.title}</CardTitle>
+                        <CardDescription className="text-sm sm:text-base">{career.company}</CardDescription>
                       </div>
-                      <Badge variant="secondary">{career.match}% Match</Badge>
+                      <Badge variant="secondary" className="text-xs self-start">{career.match}% Match</Badge>
                     </div>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-muted-foreground mb-4">{career.description}</p>
-                    <div className="flex gap-2">
-                      <Button>View Details</Button>
-                      <Button variant="outline">Remove from Saved</Button>
+                    <p className="text-sm sm:text-base text-muted-foreground mb-3 sm:mb-4">{career.description}</p>
+                    <div className="flex flex-col sm:flex-row gap-2">
+                      <Button className="text-xs sm:text-sm">View Details</Button>
+                      <Button variant="outline" className="text-xs sm:text-sm">Remove from Saved</Button>
                     </div>
                   </CardContent>
                 </Card>
@@ -247,27 +247,27 @@ export default function CareersPage() {
           </div>
         </TabsContent>
 
-        <TabsContent value="trending">
-          <div className="grid gap-6">
+        <TabsContent value="trending" className="space-y-3 sm:space-y-4">
+          <div className="grid gap-4 sm:gap-6">
             {careerPaths.slice(0, 3).map((career) => (
               <Card key={career.id}>
-                <CardHeader>
-                  <div className="flex items-start justify-between">
-                    <div>
-                      <CardTitle className="flex items-center gap-2">
+                <CardHeader className="pb-3 sm:pb-4">
+                  <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 sm:gap-4">
+                    <div className="min-w-0 flex-1">
+                      <CardTitle className="flex flex-wrap items-center gap-2 text-lg sm:text-xl">
                         {career.title}
-                        <Badge variant="destructive">Trending</Badge>
+                        <Badge variant="destructive" className="text-xs">Trending</Badge>
                       </CardTitle>
-                      <CardDescription>{career.company}</CardDescription>
+                      <CardDescription className="text-sm sm:text-base">{career.company}</CardDescription>
                     </div>
-                    <Badge variant="secondary">{career.match}% Match</Badge>
+                    <Badge variant="secondary" className="text-xs self-start">{career.match}% Match</Badge>
                   </div>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-muted-foreground mb-4">{career.description}</p>
-                  <div className="flex gap-2">
-                    <Button>Explore Path</Button>
-                    <Button variant="outline">Save for Later</Button>
+                  <p className="text-sm sm:text-base text-muted-foreground mb-3 sm:mb-4">{career.description}</p>
+                  <div className="flex flex-col sm:flex-row gap-2">
+                    <Button className="text-xs sm:text-sm">Explore Path</Button>
+                    <Button variant="outline" className="text-xs sm:text-sm">Save for Later</Button>
                   </div>
                 </CardContent>
               </Card>

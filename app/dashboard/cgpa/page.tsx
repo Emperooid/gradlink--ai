@@ -7,43 +7,43 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 
 export default function CgpaPage() {
   return (
-    <div className="space-y-6">
-      <div>
-        <h1 className="text-3xl font-bold tracking-tight">CGPA Analyzer</h1>
-        <p className="text-muted-foreground">
+    <div className="space-y-4 sm:space-y-6">
+      <div className="space-y-1 sm:space-y-2">
+        <h1 className="text-2xl sm:text-3xl font-bold tracking-tight">CGPA Analyzer</h1>
+        <p className="text-sm sm:text-base text-muted-foreground">
           Analyze your academic performance and get personalized career recommendations
         </p>
       </div>
 
-      <Tabs defaultValue="analyzer" className="space-y-4">
-        <TabsList>
-          <TabsTrigger value="analyzer">CGPA Analyzer</TabsTrigger>
-          <TabsTrigger value="calculator">CGPA Calculator</TabsTrigger>
-          <TabsTrigger value="history">History</TabsTrigger>
+      <Tabs defaultValue="analyzer" className="space-y-3 sm:space-y-4">
+        <TabsList className="grid w-full grid-cols-3">
+          <TabsTrigger value="analyzer" className="text-xs sm:text-sm">Analyzer</TabsTrigger>
+          <TabsTrigger value="calculator" className="text-xs sm:text-sm">Calculator</TabsTrigger>
+          <TabsTrigger value="history" className="text-xs sm:text-sm">History</TabsTrigger>
         </TabsList>
 
-        <TabsContent value="analyzer" className="space-y-4">
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <TabsContent value="analyzer" className="space-y-3 sm:space-y-4">
+          <div className="grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
             <Card>
-              <CardHeader>
-                <CardTitle>Current CGPA</CardTitle>
-                <CardDescription>Your current academic performance</CardDescription>
+              <CardHeader className="pb-3 sm:pb-4">
+                <CardTitle className="text-base sm:text-lg">Current CGPA</CardTitle>
+                <CardDescription className="text-xs sm:text-sm">Your current academic performance</CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="text-center">
-                  <span className="text-5xl font-bold">4.00</span>
+                  <span className="text-3xl sm:text-5xl font-bold">4.00</span>
                 </div>
               </CardContent>
             </Card>
 
             <Card>
-              <CardHeader>
-                <CardTitle>Level</CardTitle>
-                <CardDescription>Your current academic level</CardDescription>
+              <CardHeader className="pb-3 sm:pb-4">
+                <CardTitle className="text-base sm:text-lg">Level</CardTitle>
+                <CardDescription className="text-xs sm:text-sm">Your current academic level</CardDescription>
               </CardHeader>
               <CardContent>
                 <Select defaultValue="100">
-                  <SelectTrigger>
+                  <SelectTrigger className="h-9 sm:h-10 text-sm">
                     <SelectValue placeholder="Select level" />
                   </SelectTrigger>
                   <SelectContent>
@@ -57,36 +57,36 @@ export default function CgpaPage() {
               </CardContent>
             </Card>
 
-            <Card>
-              <CardHeader>
-                <CardTitle>Course Title</CardTitle>
-                <CardDescription>Your course of study</CardDescription>
+            <Card className="sm:col-span-2 lg:col-span-1">
+              <CardHeader className="pb-3 sm:pb-4">
+                <CardTitle className="text-base sm:text-lg">Course Title</CardTitle>
+                <CardDescription className="text-xs sm:text-sm">Your course of study</CardDescription>
               </CardHeader>
               <CardContent>
-                <Input placeholder="e.g. Computer Science" />
+                <Input placeholder="e.g. Computer Science" className="h-9 sm:h-10 text-sm" />
               </CardContent>
             </Card>
           </div>
 
-          <Card className="col-span-full">
-            <CardHeader>
-              <CardTitle>Analysis Results</CardTitle>
-              <CardDescription>Career path analysis based on your academic performance</CardDescription>
+          <Card className="w-full">
+            <CardHeader className="pb-3 sm:pb-4">
+              <CardTitle className="text-base sm:text-lg">Analysis Results</CardTitle>
+              <CardDescription className="text-xs sm:text-sm">Career path analysis based on your academic performance</CardDescription>
             </CardHeader>
-            <CardContent className="space-y-4">
+            <CardContent className="space-y-3 sm:space-y-4">
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
-                  <span className="font-medium">Match Score</span>
-                  <span className="font-medium text-primary">92%</span>
+                  <span className="font-medium text-sm sm:text-base">Match Score</span>
+                  <span className="font-medium text-primary text-sm sm:text-base">92%</span>
                 </div>
-                <div className="h-2 w-full rounded-full bg-muted">
+                <div className="h-1.5 sm:h-2 w-full rounded-full bg-muted">
                   <div className="h-full w-[92%] rounded-full bg-primary"></div>
                 </div>
-                <p className="text-sm text-muted-foreground">Strong fit for tech careers</p>
+                <p className="text-xs sm:text-sm text-muted-foreground">Strong fit for tech careers</p>
               </div>
 
               <div>
-                <h3 className="font-medium">Top Career Paths</h3>
+                <h3 className="font-medium text-sm sm:text-base">Top Career Paths</h3>
                 <ul className="mt-2 space-y-1">
                   <li className="flex items-center gap-2">
                     <svg
@@ -99,53 +99,53 @@ export default function CgpaPage() {
                       strokeWidth="2"
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      className="h-4 w-4 text-primary"
+                      className="h-3 w-3 sm:h-4 sm:w-4 text-primary shrink-0"
                     >
                       <polyline points="20 6 9 17 4 12"></polyline>
                     </svg>
-                    <span>Data Scientist</span>
+                    <span className="text-xs sm:text-sm">Data Scientist</span>
                   </li>
                   <li className="flex items-center gap-2">
-                    <span className="h-4 w-4"></span>
-                    <span>Software Engineer</span>
+                    <span className="h-3 w-3 sm:h-4 sm:w-4 shrink-0"></span>
+                    <span className="text-xs sm:text-sm">Software Engineer</span>
                   </li>
                   <li className="flex items-center gap-2">
-                    <span className="h-4 w-4"></span>
-                    <span>Business Analyst</span>
+                    <span className="h-3 w-3 sm:h-4 sm:w-4 shrink-0"></span>
+                    <span className="text-xs sm:text-sm">Business Analyst</span>
                   </li>
                 </ul>
               </div>
 
-              <Button className="w-full">Analyze Career Path</Button>
+              <Button className="w-full text-xs sm:text-sm">Analyze Career Path</Button>
             </CardContent>
           </Card>
         </TabsContent>
 
         <TabsContent value="calculator">
           <Card>
-            <CardHeader>
-              <CardTitle>CGPA Calculator</CardTitle>
-              <CardDescription>Calculate your CGPA based on your courses and grades</CardDescription>
+            <CardHeader className="pb-3 sm:pb-4">
+              <CardTitle className="text-base sm:text-lg">CGPA Calculator</CardTitle>
+              <CardDescription className="text-xs sm:text-sm">Calculate your CGPA based on your courses and grades</CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="space-y-4">
-                <div className="grid gap-4 md:grid-cols-4">
+              <div className="space-y-3 sm:space-y-4">
+                <div className="grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
                   <div className="space-y-2">
-                    <Label htmlFor="course-code">Course Code</Label>
-                    <Input id="course-code" placeholder="e.g. CSC101" />
+                    <Label htmlFor="course-code" className="text-xs sm:text-sm">Course Code</Label>
+                    <Input id="course-code" placeholder="e.g. CSC101" className="h-9 sm:h-10 text-sm" />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="course-title">Course Title</Label>
-                    <Input id="course-title" placeholder="e.g. Introduction to Programming" />
+                    <Label htmlFor="course-title" className="text-xs sm:text-sm">Course Title</Label>
+                    <Input id="course-title" placeholder="e.g. Introduction to Programming" className="h-9 sm:h-10 text-sm" />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="credit-units">Credit Units</Label>
-                    <Input id="credit-units" type="number" placeholder="e.g. 3" />
+                    <Label htmlFor="credit-units" className="text-xs sm:text-sm">Credit Units</Label>
+                    <Input id="credit-units" type="number" placeholder="e.g. 3" className="h-9 sm:h-10 text-sm" />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="grade">Grade</Label>
+                    <Label htmlFor="grade" className="text-xs sm:text-sm">Grade</Label>
                     <Select>
-                      <SelectTrigger id="grade">
+                      <SelectTrigger id="grade" className="h-9 sm:h-10 text-sm">
                         <SelectValue placeholder="Select grade" />
                       </SelectTrigger>
                       <SelectContent>

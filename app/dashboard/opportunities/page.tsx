@@ -129,27 +129,27 @@ export default function OpportunitiesPage() {
   }
 
   return (
-    <div className="space-y-6">
-      <div>
-        <h1 className="text-3xl font-bold tracking-tight">Opportunities</h1>
-        <p className="text-muted-foreground">
+    <div className="space-y-4 sm:space-y-6">
+      <div className="space-y-1 sm:space-y-2">
+        <h1 className="text-2xl sm:text-3xl font-bold tracking-tight">Opportunities</h1>
+        <p className="text-sm sm:text-base text-muted-foreground">
           Discover internships, scholarships, career fairs, and more opportunities tailored to your profile
         </p>
       </div>
 
-      <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+      <div className="flex flex-col gap-3 sm:gap-4 md:flex-row md:items-center md:justify-between">
         <div className="relative flex-1 max-w-md">
           <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
           <Input
             placeholder="Search opportunities..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="pl-10"
+            className="pl-10 h-9 sm:h-10 text-sm"
           />
         </div>
         <div className="flex gap-2">
           <Select value={filterType} onValueChange={setFilterType}>
-            <SelectTrigger className="w-40">
+            <SelectTrigger className="w-32 sm:w-40 h-9 sm:h-10 text-xs sm:text-sm">
               <SelectValue placeholder="Filter by type" />
             </SelectTrigger>
             <SelectContent>
@@ -161,73 +161,73 @@ export default function OpportunitiesPage() {
               <SelectItem value="competition">Competitions</SelectItem>
             </SelectContent>
           </Select>
-          <Button variant="outline" size="sm">
-            Sort by Deadline
+          <Button variant="outline" size="sm" className="text-xs sm:text-sm">
+            <span className="hidden sm:inline">Sort by </span>Deadline
           </Button>
         </div>
       </div>
 
-      <Tabs defaultValue="all" className="space-y-4">
-        <TabsList>
-          <TabsTrigger value="all">All Opportunities</TabsTrigger>
-          <TabsTrigger value="recommended">Recommended</TabsTrigger>
-          <TabsTrigger value="applied">Applied</TabsTrigger>
-          <TabsTrigger value="saved">Saved</TabsTrigger>
+      <Tabs defaultValue="all" className="space-y-3 sm:space-y-4">
+        <TabsList className="grid w-full grid-cols-4">
+          <TabsTrigger value="all" className="text-xs sm:text-sm">All</TabsTrigger>
+          <TabsTrigger value="recommended" className="text-xs sm:text-sm">Recommended</TabsTrigger>
+          <TabsTrigger value="applied" className="text-xs sm:text-sm">Applied</TabsTrigger>
+          <TabsTrigger value="saved" className="text-xs sm:text-sm">Saved</TabsTrigger>
         </TabsList>
 
-        <TabsContent value="all" className="space-y-4">
-          <div className="grid gap-6">
+        <TabsContent value="all" className="space-y-3 sm:space-y-4">
+          <div className="grid gap-4 sm:gap-6">
             {filteredOpportunities.map((opportunity) => (
               <Card key={opportunity.id} className="overflow-hidden">
-                <CardHeader>
-                  <div className="flex items-start justify-between">
-                    <div className="space-y-1">
-                      <div className="flex items-center gap-2">
-                        <Badge variant="outline">{opportunity.type}</Badge>
-                        <Badge className={getStatusColor(opportunity.status)}>{opportunity.status}</Badge>
-                        <Badge variant="secondary">{opportunity.match}% Match</Badge>
+                <CardHeader className="pb-3 sm:pb-4">
+                  <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 sm:gap-4">
+                    <div className="space-y-2 min-w-0 flex-1">
+                      <div className="flex flex-wrap items-center gap-1 sm:gap-2">
+                        <Badge variant="outline" className="text-xs">{opportunity.type}</Badge>
+                        <Badge className={`text-xs ${getStatusColor(opportunity.status)}`}>{opportunity.status}</Badge>
+                        <Badge variant="secondary" className="text-xs">{opportunity.match}% Match</Badge>
                       </div>
-                      <CardTitle className="text-xl">{opportunity.title}</CardTitle>
-                      <CardDescription className="text-base">{opportunity.company}</CardDescription>
+                      <CardTitle className="text-lg sm:text-xl line-clamp-2">{opportunity.title}</CardTitle>
+                      <CardDescription className="text-sm sm:text-base">{opportunity.company}</CardDescription>
                     </div>
                   </div>
                 </CardHeader>
-                <CardContent className="space-y-4">
-                  <p className="text-muted-foreground">{opportunity.description}</p>
+                <CardContent className="space-y-3 sm:space-y-4">
+                  <p className="text-sm sm:text-base text-muted-foreground line-clamp-3">{opportunity.description}</p>
 
-                  <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+                  <div className="grid gap-2 sm:gap-3 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
                     <div className="flex items-center gap-2">
-                      <MapPin className="h-4 w-4 text-muted-foreground" />
-                      <span className="text-sm">{opportunity.location}</span>
+                      <MapPin className="h-3 w-3 sm:h-4 sm:w-4 text-muted-foreground shrink-0" />
+                      <span className="text-xs sm:text-sm text-muted-foreground truncate">{opportunity.location}</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <Calendar className="h-4 w-4 text-muted-foreground" />
-                      <span className="text-sm">Due: {opportunity.deadline}</span>
+                      <Calendar className="h-3 w-3 sm:h-4 sm:w-4 text-muted-foreground shrink-0" />
+                      <span className="text-xs sm:text-sm text-muted-foreground">Due: {opportunity.deadline}</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <Clock className="h-4 w-4 text-muted-foreground" />
-                      <span className="text-sm">{opportunity.duration}</span>
+                      <Clock className="h-3 w-3 sm:h-4 sm:w-4 text-muted-foreground shrink-0" />
+                      <span className="text-xs sm:text-sm text-muted-foreground">{opportunity.duration}</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <Users className="h-4 w-4 text-muted-foreground" />
-                      <span className="text-sm">{opportunity.applicants} applicants</span>
+                      <Users className="h-3 w-3 sm:h-4 sm:w-4 text-muted-foreground shrink-0" />
+                      <span className="text-xs sm:text-sm text-muted-foreground">{opportunity.applicants} applicants</span>
                     </div>
                   </div>
 
-                  <div className="grid gap-4 md:grid-cols-2">
-                    <div>
-                      <h4 className="font-medium text-sm mb-2">Requirements</h4>
+                  <div className="grid gap-3 sm:gap-4 grid-cols-1 md:grid-cols-2">
+                    <div className="space-y-2">
+                      <h4 className="font-medium text-xs sm:text-sm">Requirements</h4>
                       <ul className="space-y-1">
                         {opportunity.requirements.map((req, index) => (
-                          <li key={index} className="text-sm text-muted-foreground flex items-center gap-2">
-                            <div className="h-1 w-1 rounded-full bg-muted-foreground" />
-                            {req}
+                          <li key={index} className="text-xs sm:text-sm text-muted-foreground flex items-center gap-2">
+                            <div className="h-1 w-1 rounded-full bg-muted-foreground shrink-0" />
+                            <span className="line-clamp-2">{req}</span>
                           </li>
                         ))}
                       </ul>
                     </div>
-                    <div>
-                      <h4 className="font-medium text-sm mb-2">Benefits</h4>
+                    <div className="space-y-2">
+                      <h4 className="font-medium text-xs sm:text-sm">Benefits</h4>
                       <div className="flex flex-wrap gap-1">
                         {opportunity.benefits.map((benefit, index) => (
                           <Badge key={index} variant="outline" className="text-xs">
@@ -238,11 +238,11 @@ export default function OpportunitiesPage() {
                     </div>
                   </div>
 
-                  <div className="flex gap-2 pt-4">
-                    <Button className="flex-1">Apply Now</Button>
-                    <Button variant="outline">Save</Button>
-                    <Button variant="outline" size="icon">
-                      <ExternalLink className="h-4 w-4" />
+                  <div className="flex flex-col sm:flex-row gap-2 pt-2 sm:pt-4">
+                    <Button className="flex-1 text-xs sm:text-sm">Apply Now</Button>
+                    <Button variant="outline" className="sm:w-auto text-xs sm:text-sm">Save</Button>
+                    <Button variant="outline" size="icon" className="sm:w-auto">
+                      <ExternalLink className="h-3 w-3 sm:h-4 sm:w-4" />
                     </Button>
                   </div>
                 </CardContent>
@@ -251,26 +251,26 @@ export default function OpportunitiesPage() {
           </div>
         </TabsContent>
 
-        <TabsContent value="recommended">
-          <div className="grid gap-6">
+        <TabsContent value="recommended" className="space-y-3 sm:space-y-4">
+          <div className="grid gap-4 sm:gap-6">
             {filteredOpportunities
               .filter((opp) => opp.match >= 90)
               .map((opportunity) => (
                 <Card key={opportunity.id}>
-                  <CardHeader>
-                    <div className="flex items-start justify-between">
-                      <div>
-                        <CardTitle>{opportunity.title}</CardTitle>
-                        <CardDescription>{opportunity.company}</CardDescription>
+                  <CardHeader className="pb-3 sm:pb-4">
+                    <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 sm:gap-4">
+                      <div className="min-w-0 flex-1">
+                        <CardTitle className="text-lg sm:text-xl line-clamp-2">{opportunity.title}</CardTitle>
+                        <CardDescription className="text-sm sm:text-base">{opportunity.company}</CardDescription>
                       </div>
-                      <Badge variant="secondary">{opportunity.match}% Match</Badge>
+                      <Badge variant="secondary" className="text-xs self-start">{opportunity.match}% Match</Badge>
                     </div>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-muted-foreground mb-4">{opportunity.description}</p>
-                    <div className="flex gap-2">
-                      <Button>Apply Now</Button>
-                      <Button variant="outline">Learn More</Button>
+                    <p className="text-sm sm:text-base text-muted-foreground mb-3 sm:mb-4 line-clamp-3">{opportunity.description}</p>
+                    <div className="flex flex-col sm:flex-row gap-2">
+                      <Button className="text-xs sm:text-sm">Apply Now</Button>
+                      <Button variant="outline" className="text-xs sm:text-sm">Learn More</Button>
                     </div>
                   </CardContent>
                 </Card>
@@ -280,14 +280,14 @@ export default function OpportunitiesPage() {
 
         <TabsContent value="applied">
           <Card>
-            <CardHeader>
-              <CardTitle>Applied Opportunities</CardTitle>
-              <CardDescription>Track your application status</CardDescription>
+            <CardHeader className="pb-3 sm:pb-4">
+              <CardTitle className="text-base sm:text-lg">Applied Opportunities</CardTitle>
+              <CardDescription className="text-xs sm:text-sm">Track your application status</CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="text-center py-8">
-                <p className="text-muted-foreground">No applications yet</p>
-                <Button className="mt-4">Browse Opportunities</Button>
+              <div className="text-center py-6 sm:py-8">
+                <p className="text-sm sm:text-base text-muted-foreground">No applications yet</p>
+                <Button className="mt-3 sm:mt-4 text-xs sm:text-sm">Browse Opportunities</Button>
               </div>
             </CardContent>
           </Card>
@@ -295,14 +295,14 @@ export default function OpportunitiesPage() {
 
         <TabsContent value="saved">
           <Card>
-            <CardHeader>
-              <CardTitle>Saved Opportunities</CardTitle>
-              <CardDescription>Opportunities you've saved for later</CardDescription>
+            <CardHeader className="pb-3 sm:pb-4">
+              <CardTitle className="text-base sm:text-lg">Saved Opportunities</CardTitle>
+              <CardDescription className="text-xs sm:text-sm">Opportunities you've saved for later</CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="text-center py-8">
-                <p className="text-muted-foreground">No saved opportunities yet</p>
-                <Button className="mt-4">Browse Opportunities</Button>
+              <div className="text-center py-6 sm:py-8">
+                <p className="text-sm sm:text-base text-muted-foreground">No saved opportunities yet</p>
+                <Button className="mt-3 sm:mt-4 text-xs sm:text-sm">Browse Opportunities</Button>
               </div>
             </CardContent>
           </Card>

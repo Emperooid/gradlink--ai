@@ -17,17 +17,17 @@ export function RecentActivities() {
   ]
 
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle>Recent Activities</CardTitle>
-        <CardDescription>Your latest actions on GradLink AI</CardDescription>
+    <Card className="w-full">
+      <CardHeader className="pb-3 sm:pb-4">
+        <CardTitle className="text-base sm:text-lg">Recent Activities</CardTitle>
+        <CardDescription className="text-xs sm:text-sm">Your latest actions on GradLink AI</CardDescription>
       </CardHeader>
       <CardContent>
-        <div className="space-y-4">
+        <div className="space-y-3 sm:space-y-4">
           {activities.map((activity, index) => (
-            <div key={index} className="flex items-center justify-between">
-              <span className="text-sm font-medium">{activity.title}</span>
-              <span className="text-xs text-muted-foreground">{activity.time}</span>
+            <div key={index} className="flex items-center justify-between gap-2">
+              <span className="text-xs sm:text-sm font-medium truncate">{activity.title}</span>
+              <span className="text-xs text-muted-foreground whitespace-nowrap">{activity.time}</span>
             </div>
           ))}
         </div>

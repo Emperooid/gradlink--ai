@@ -32,32 +32,35 @@ export function CareerSuggestions() {
   ]
 
   return (
-    <Card className="col-span-full lg:col-span-2">
-      <CardHeader>
-        <CardTitle>Career Suggestions</CardTitle>
-        <CardDescription>Personalized career recommendations based on your academic performance</CardDescription>
+    <Card className="w-full">
+      <CardHeader className="pb-3 sm:pb-4">
+        <CardTitle className="text-base sm:text-lg">Career Suggestions</CardTitle>
+        <CardDescription className="text-xs sm:text-sm">Personalized career recommendations based on your academic performance</CardDescription>
       </CardHeader>
       <CardContent>
-        <div className="space-y-6">
+        <div className="space-y-4 sm:space-y-6">
           {careers.map((career, index) => (
-            <div key={index} className="rounded-lg border p-4">
-              <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-                <div className="space-y-1">
-                  <div className="flex items-center gap-2">
-                    <h3 className="font-semibold">{career.title}</h3>
-                    <Badge variant="outline">{career.match}% Match</Badge>
+            <div key={index} className="rounded-lg border p-3 sm:p-4">
+              <div className="flex flex-col gap-3 sm:gap-4">
+                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 sm:gap-4">
+                  <div className="space-y-1 min-w-0 flex-1">
+                    <div className="flex flex-wrap items-center gap-2">
+                      <h3 className="font-semibold text-sm sm:text-base">{career.title}</h3>
+                      <Badge variant="outline" className="text-xs">{career.match}% Match</Badge>
+                    </div>
+                    <p className="text-xs sm:text-sm text-muted-foreground">{career.company}</p>
+                    <p className="text-xs sm:text-sm">{career.description}</p>
+                    <div className="flex flex-wrap gap-x-3 sm:gap-x-4 gap-y-1 pt-1 sm:pt-2">
+                      <span className="text-xs text-muted-foreground">{career.salary}</span>
+                      <span className="text-xs text-muted-foreground">{career.growth}</span>
+                    </div>
                   </div>
-                  <p className="text-sm text-muted-foreground">{career.company}</p>
-                  <p className="text-sm">{career.description}</p>
-                  <div className="flex flex-wrap gap-x-4 gap-y-1 pt-2">
-                    <span className="text-xs text-muted-foreground">{career.salary}</span>
-                    <span className="text-xs text-muted-foreground">{career.growth}</span>
-                  </div>
+                  <Button variant="outline" size="sm" className="gap-1 text-xs sm:text-sm shrink-0">
+                    <Check className="h-3 w-3 sm:h-4 sm:w-4" />
+                    <span className="hidden sm:inline">Save Career Path</span>
+                    <span className="sm:hidden">Save</span>
+                  </Button>
                 </div>
-                <Button variant="outline" size="sm" className="gap-1">
-                  <Check className="h-4 w-4" />
-                  Save Career Path
-                </Button>
               </div>
             </div>
           ))}
